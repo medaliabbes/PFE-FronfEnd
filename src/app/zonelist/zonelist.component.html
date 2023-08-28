@@ -1,0 +1,6 @@
+
+
+<p>Zones</p>
+<ul>
+    <li *ngFor="let zone of myzones"> <strong><a (click)="getZone(zone._id)">{{ zone._id}} </a> </strong>  {{ zone.name }} {{ zone.ttnid}}</li>
+</ul>
