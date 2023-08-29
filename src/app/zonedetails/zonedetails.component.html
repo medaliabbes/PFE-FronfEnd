@@ -1,1 +1,7 @@
-<p>zonedetails works!</p>
+<div *ngIf="myzone">
+    <p>zonedetails :  id : {{myzone._id }} ,name : {{ myzone.name}} 
+        , ttnid :{{ myzone.ttnid}} , userid : {{ myzone.userid}} ,
+    <ul>
+        <li *ngFor="let device of devices">EUI {{device.eui}}</li>
+    </ul>   
+</div>

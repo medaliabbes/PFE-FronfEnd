@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +14,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  hide = true ;
   email    : any = "";
   password : any = "" ; 
-
+  userNotFound = false ;
   constructor(private loginservice : LoginService , private router:Router){}
 
   login()
@@ -27,9 +32,16 @@ export class LoginComponent {
         this.router.navigate(['/' , 'zones']);
       }
       else{
-        console.log("error login") ;
+        
       }
       
-    })
+    } , err => {
+        console.log("error login :" ,err) ;
+        this.userNotFound = true ;
+    }) ;
+  }
+
+  getErrorMessage() : String{
+    return "User dosn't exist" ;
   }
 }

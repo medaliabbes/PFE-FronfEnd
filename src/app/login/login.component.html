@@ -1,10 +1,25 @@
 
+<div class="layout">
+  
+    <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [(ngModel)] ="email" >
+      </mat-form-field>    
 
-<div align="center">
-    <input type="text" [(ngModel)] ="email" placeholder="email">
-    <br>
-    <input type="password" [(ngModel)] ="password" placeholder="password">
-    <br>
-    <button type="submit" (click)="login()">login</button>
+    <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+  
+        <mat-error *ngIf="userNotFound">{{getErrorMessage()}}</mat-error>
+     
+    <button mat-raised-button color="primary" (click)="login()">login</button>
+
+
+  
 </div>
 
+   
