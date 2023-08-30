@@ -16,10 +16,10 @@ input.example-right-align {
 }
 
 .layout {
-  margin-top: 2%;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  padding-top: 2%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 mat-form-field {
@@ -37,4 +37,6 @@ button{
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-top :10px ;
 }
+

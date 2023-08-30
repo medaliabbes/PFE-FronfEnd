@@ -12,12 +12,22 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatDividerModule} from '@angular/material/divider'; 
+import { MatTableModule } from '@angular/material/table' ;
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ZonelistComponent,
-    ZonedetailsComponent
+    ZonedetailsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,14 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule ,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
