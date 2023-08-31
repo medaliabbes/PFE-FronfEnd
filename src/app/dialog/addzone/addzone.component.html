@@ -1,0 +1,23 @@
+
+<div mat-dialog-title > 
+    <h1>New Zone</h1>
+  
+</div>
+<div mat-dialog-content>
+    
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput  placeholder="Zone name"  [(ngModel)]="name" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input matInput  placeholder="loc"  [(ngModel)]="location">
+        </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions class="actions">  
+    <button mat-raised-button  color ="primary" (click)="addNewZone()">Add</button>
+    <button mat-stroked-button color ="primary" (click)="cancel()">Cancel</button>
+</div>

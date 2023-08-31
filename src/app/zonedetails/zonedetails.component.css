@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+
+.top-left {
+    float: right;
+    margin-bottom:  1%;
+}
+
+.main-body {
+    padding-top : 3% ;
+    margin : 0 auto ;
+    max-width: 85%;
+  }
+.selected {
+    background-color: yellow;
+  }
+
+.side {
+  display: flex;
+}
+
+.mat-form-field{
+  width : 100px ;
+}
+
+div button {
+  margin-right: 2px;
+}

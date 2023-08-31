@@ -20,6 +20,9 @@ import { MatTableModule } from '@angular/material/table' ;
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { AdddeviceComponent } from './dialog/adddevice/adddevice.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddzoneComponent } from './dialog/addzone/addzone.component' ;
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     LoginComponent,
     ZonelistComponent,
     ZonedetailsComponent,
-    SidebarComponent
+    SidebarComponent,
+    AdddeviceComponent,
+    AddzoneComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

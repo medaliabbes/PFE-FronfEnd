@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from  '@angular/router';
 import { Zone } from '../model/zone';
 import { ZoneService } from '../zone.service';
@@ -11,6 +11,10 @@ import { MatTableModule} from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
 import { catchError, Observable, throwError } from 'rxjs';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { AdddeviceComponent } from '../dialog/adddevice/adddevice.component';
+import { AddzoneComponent } from '../dialog/addzone/addzone.component';
 
 @Component({
   selector: 'app-zonelist',
@@ -19,19 +23,21 @@ import {MatGridListModule} from '@angular/material/grid-list';
 })
 export class ZonelistComponent implements OnInit{
   
-  @Input() RefreshDevicesList: Observable<void> | undefined;
+  @Output() RefreshDevicesList: Observable<void> | undefined;
 
   ListOfZones : Array<Zone> | undefined;
   
   
   displayedColumns: string[] = ["_id", "location","name","ttnid"
-  ,"userid" ,"__v"  ] ;
+  ,"userid" ,"__v" ,"action" ] ;
   dataSource!: MatTableDataSource<Zone> ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private ZoneService : ZoneService ,private router:Router){}
+  clickedRows = new Set<Zone>();
+
+  constructor(private _dialog : MatDialog ,private ZoneService : ZoneService ,private router:Router){}
 
   myzones : Zone[] | undefined ;
   ngOnInit(): void {
@@ -41,6 +47,8 @@ export class ZonelistComponent implements OnInit{
       this.getListOfZones() ;
     })
   }
+
+  moseon = false ; 
 
   getListOfZones()
   {
@@ -52,11 +60,37 @@ export class ZonelistComponent implements OnInit{
       
      }) ;
   }
+
   getZone(id : String){
     
     const zoneURL = "/zones/"+id.toString() ;
     console.log("getZone() :",zoneURL) ;
     this.router.navigateByUrl(zoneURL);
+  }
+
+  openAddZoneDialog()
+  {
+      
+      const dialogref = this._dialog.open(AddzoneComponent) ;
+      dialogref.afterClosed().subscribe({ next : (val:any) =>{
+        if(val === true)
+        {
+          this.getListOfZones() ;
+        }
+      }})
+  }
+
+  select(id : string){
+    console.log("ele selected :" , id);
+  }
+
+
+  hover(){
+    this.moseon = true ;
+  }
+
+  leave(){
+    this.moseon = false ;
   }
 
   applyFilter(event: Event) {

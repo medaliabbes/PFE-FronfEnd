@@ -46,9 +46,14 @@ export class ZoneService {
     return this.http.get<Zone>(this.url+'zones/'+id , options) ;
   }
 
-  create()
+  create(ZoneName : String, ZoneLocation : String)
   {
-
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'JWT '+this.auth.getToken()});
+      let options = { headers: headers };
+      let zone = {name : ZoneName , location : ZoneLocation} ;
+    return this.http.post(this.url +'zones', zone, options , )
   }
 
   delete(id : String){

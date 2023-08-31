@@ -1,0 +1,13 @@
+
+/*
+.cont {
+    display: block;
+}
+*/
+mat-form-field{
+    display: block;
+}
+
+.actions button {
+    flex : 1;
+}

@@ -22,3 +22,10 @@ table {
     margin : 0 auto ;
     max-width: 85%;
   }
+.selected {
+    background-color: yellow;
+  }
+
+.side {
+  display: flex;
+}
