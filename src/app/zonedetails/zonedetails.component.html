@@ -37,11 +37,32 @@
                 <button mat-icon-button (click)="DeleteDevice(row._id)">  
                     <mat-icon>delete</mat-icon>
                 </button>   
-                <button mat-raised-button color="primary" (click) = "sendOnCommand(row._id)" >
-                    On
+                <button *ngIf="pins[0] === 'off'" mat-stroked-button color="primary" (click) = "sendCommand(row._id , 0)" >
+                    {{ pins[0]}}
                 </button>   
-                <button mat-stroked-button color="primary" (click) = "sendOffCommand(row._id)" >
-                    Off
+                <button *ngIf="pins[0] === 'on'" mat-raised-button color="primary" (click) = "sendCommand(row._id , 0)" >
+                    {{ pins[0]}}
+                </button> 
+
+                <button *ngIf="pins[1] === 'off'" mat-stroked-button color="primary" (click) = "sendCommand(row._id ,1 )" >
+                    {{ pins[1]}}
+                </button>
+                <button *ngIf="pins[1] === 'on'" mat-raised-button color="primary" (click) = "sendCommand(row._id ,1 )" >
+                    {{ pins[1]}}
+                </button>
+
+                <button *ngIf="pins[2] === 'off'" mat-stroked-button color="primary" (click) = "sendCommand(row._id ,2)" >
+                    {{ pins[2]}}
+                </button>
+                <button *ngIf="pins[2] === 'on'" mat-raised-button color="primary" (click) = "sendCommand(row._id ,2)" >
+                    {{ pins[2]}}
+                </button>
+
+                <button *ngIf="pins[3] === 'off'" mat-stroked-button color="primary" (click) = "sendCommand(row._id , 3)" >
+                    {{ pins[3]}}
+                </button> 
+                <button *ngIf="pins[3] === 'on'" mat-raised-button color="primary" (click) = "sendCommand(row._id , 3)" >
+                    {{ pins[3]}}
                 </button>   
                 </div>
             </td>

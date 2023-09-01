@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
     console.log("appCom OnInit") ;
     this.auth.loggedInEvent.subscribe( data => {
       this.userLoggedIn = data ;
-      console.log("loggedInEvent :" , data) ;
+      //console.log("loggedInEvent :" , data) ;
     })
   }
 

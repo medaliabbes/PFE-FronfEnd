@@ -21,7 +21,8 @@ export class ZonedetailsComponent implements OnInit{
 
   ListOfDevices : Array<Device> | undefined;
   
-  
+  pins : String[] = ["off" ,"off" ,"off" ,"off" ] ;
+
   displayedColumns: string[] = ["name", "mode","state","action" ] ;
 
   dataSource!: MatTableDataSource<Device> ;
@@ -83,6 +84,27 @@ export class ZonedetailsComponent implements OnInit{
       console.log("command send") ;
     } , err => {
       console.error("error" , err) ;
-    })
+    }) ;
   }
+
+  sendCommand(id :String , Pin : number){
+    if(this.pins[Pin] === "on")
+    {
+      this.pins[Pin] = "off" ;
+    }
+    else{
+      this.pins[Pin] = "on" ;
+    }
+    
+    this.userCommandService.Create({deviceid:id,command :this.pins , pin : Pin}).subscribe( data =>{
+      console.log("command send") ;
+    } , err => {
+      console.error("error" , err) ;
+    }) ;
+
+   
+    
+  }
+
+
 }
