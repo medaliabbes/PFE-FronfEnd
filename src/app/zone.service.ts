@@ -57,7 +57,11 @@ export class ZoneService {
   }
 
   delete(id : String){
-
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'JWT '+this.auth.getToken()});
+      let options = { headers: headers };
+    return this.http.delete(this.url+'zones/'+id , options) ;
   }
 
   update(id : String)

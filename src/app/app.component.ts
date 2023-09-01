@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -6,17 +6,31 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay, filter } from 'rxjs/operators';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   title = 'watermon-front-end';
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  userLoggedIn : Boolean= false ;
+
+  constructor(private observer: BreakpointObserver, private router: Router 
+      , private auth :LoginService) {
+         
+      }
+
+  ngOnInit(): void {
+    console.log("appCom OnInit") ;
+    this.auth.loggedInEvent.subscribe( data => {
+      this.userLoggedIn = data ;
+      console.log("loggedInEvent :" , data) ;
+    })
+  }
 
   ngAfterViewInit() {
     this.observer
@@ -31,6 +45,7 @@ export class AppComponent {
           this.sidenav.open();
         }
       });
+    
 
     this.router.events
       .pipe(

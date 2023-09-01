@@ -15,6 +15,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { AdddeviceComponent } from '../dialog/adddevice/adddevice.component';
 import { AddzoneComponent } from '../dialog/addzone/addzone.component';
+import { ConfirmComponent } from '../dialog/confirm/confirm.component';
 
 @Component({
   selector: 'app-zonelist',
@@ -28,8 +29,8 @@ export class ZonelistComponent implements OnInit{
   ListOfZones : Array<Zone> | undefined;
   
   
-  displayedColumns: string[] = ["_id", "location","name","ttnid"
-  ,"userid" ,"__v" ,"action" ] ;
+  displayedColumns: string[] = [ "name", "location","ttnid"
+  ,"userid"  ,"action" ] ;
   dataSource!: MatTableDataSource<Zone> ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -102,8 +103,21 @@ export class ZonelistComponent implements OnInit{
     }
   }
 
-  DeleteZone(id : String) {
+  DeleteZone(id : String , name : String) {
 
+    const dialogref = this._dialog.open(ConfirmComponent , {data : {zonename : name}}) ;
+    dialogref.afterClosed().subscribe( data => {
+      if(data == true){
+        this.ZoneService.delete(id).subscribe(data=> {
+          console.log("Delete Zone : ",data) ;
+          this.getListOfZones() ;
+        });
+      }
+    }) ;
+    
   }
 
+  EditZone(id : String) {
+
+  }
 }

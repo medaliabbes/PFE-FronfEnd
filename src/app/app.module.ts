@@ -22,7 +22,8 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AdddeviceComponent } from './dialog/adddevice/adddevice.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddzoneComponent } from './dialog/addzone/addzone.component' ;
+import { AddzoneComponent } from './dialog/addzone/addzone.component';
+import { ConfirmComponent } from './dialog/confirm/confirm.component' ;
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddzoneComponent } from './dialog/addzone/addzone.component' ;
     ZonedetailsComponent,
     SidebarComponent,
     AdddeviceComponent,
-    AddzoneComponent
+    AddzoneComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

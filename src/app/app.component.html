@@ -1,7 +1,7 @@
-<mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
+
+<mat-toolbar  class="mat-elevation-z8">
+    <button mat-icon-button
+      *ngIf="sidenav.mode === 'over' && userLoggedIn "
       (click)="sidenav.toggle()"
     >
       <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
@@ -9,7 +9,6 @@
     </button>
     watermon
   </mat-toolbar>
-  
   <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
      
