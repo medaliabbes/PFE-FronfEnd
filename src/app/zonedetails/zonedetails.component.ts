@@ -1,11 +1,14 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
+import { AdddeviceComponent } from '../dialog/adddevice/adddevice.component';
 import { Device } from '../model/device';
 import { Zone } from '../model/zone';
+import { DevicesService } from '../service/devices.service';
 import { UserCommandService } from '../service/user-command.service';
 import { ZoneService } from '../zone.service';
 
@@ -19,6 +22,7 @@ export class ZonedetailsComponent implements OnInit{
 
   @Output() RefreshDevicesList: Observable<void> | undefined;
 
+  
   ListOfDevices : Array<Device> | undefined;
   
   pins : String[] = ["off" ,"off" ,"off" ,"off" ] ;
@@ -35,7 +39,10 @@ export class ZonedetailsComponent implements OnInit{
 
   constructor(private activatedrouter:ActivatedRoute , 
               private zoneservice : ZoneService , 
-              private userCommandService : UserCommandService){}
+              private userCommandService : UserCommandService ,
+              private _dialog : MatDialog ,
+              private deviceservice : DevicesService) {}
+              
   
   ngOnInit(): void {
     this.id = this.activatedrouter.snapshot.paramMap.get('id') ;
@@ -101,10 +108,23 @@ export class ZonedetailsComponent implements OnInit{
     } , err => {
       console.error("error" , err) ;
     }) ;
-
-   
-    
   }
 
+  addDevice(){
+    const _dialogRef = this._dialog.open(AdddeviceComponent ,{data : 
+            {zonettnId :this.myzone?.ttnid , zoneid : this.id}}) ;
+    _dialogRef.afterClosed().subscribe(data => {
+      if(data != false)
+      {
+        this.deviceservice.Create(data).subscribe(resp => {
+          console.log("device service create : " ,resp) ;
+          this.getListOfDevices() ;
+        }) ;
+        console.log("new device :" , data) ;
+      }
+      
+    });
+    
+  }
 
 }

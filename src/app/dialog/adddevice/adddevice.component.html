@@ -1,1 +1,38 @@
-<p>add device</p>
+
+<div mat-dialog-title > 
+    <label>New Device</label>
+</div>
+<div mat-dialog-content>
+    
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput  placeholder="Name"  [(ngModel)]="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Eui</mat-label>
+            <input matInput  placeholder="eui"  [(ngModel)]="eui" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Join</mat-label>
+            <input matInput  placeholder="join"  [(ngModel)]="join">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>key</mat-label>
+            <input matInput  placeholder="key"  [(ngModel)]="key">
+        </mat-form-field>
+
+        <label id="example-radio-group-label">mode</label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="mode">
+           <mat-radio-button class="example-radio-button" value = "automatic" >automatic</mat-radio-button>
+           <mat-radio-button class="example-radio-button" value = "manuel" >manuel</mat-radio-button>
+        </mat-radio-group>
+
+</div>
+
+<div mat-dialog-actions class="actions">  
+    <button mat-raised-button  color ="primary" (click)="addNewDevice()">Add</button>
+    <button mat-stroked-button color ="primary" (click)="cancel()">Cancel</button>
+</div>

@@ -24,6 +24,7 @@ import { AdddeviceComponent } from './dialog/adddevice/adddevice.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddzoneComponent } from './dialog/addzone/addzone.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component' ;
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ConfirmComponent } from './dialog/confirm/confirm.component' ;
     MatSortModule,
     MatTableModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule ,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

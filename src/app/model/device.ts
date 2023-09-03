@@ -1,13 +1,12 @@
+
 export interface Device {
-    __v: Number ,
-    _id: String ,
-    appid: String ,
+    appid: String , 
     appkey: String ,
     eui: String ,
     join: String
-    mode: Number ,
+    mode: String ,
     name: String ,
-    ownerid: String,
+    ownerid: String, 
     state: String,
     ttnid: String,
     zoneid: String,
