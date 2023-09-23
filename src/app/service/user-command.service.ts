@@ -9,6 +9,7 @@ import { LoginService } from '../login.service';
 export class UserCommandService {
 
   url :String =  "http://localhost:3000/api/v1/" ;
+  
   constructor(private http : HttpClient ,private auth:LoginService) { }
 
   Create(command : any) : Observable<any>{

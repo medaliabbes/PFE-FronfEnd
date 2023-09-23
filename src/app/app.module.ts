@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddzoneComponent } from './dialog/addzone/addzone.component';
 import { ConfirmComponent } from './dialog/confirm/confirm.component' ;
 import { MatRadioModule } from '@angular/material/radio';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatRadioModule } from '@angular/material/radio';
     SidebarComponent,
     AdddeviceComponent,
     AddzoneComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

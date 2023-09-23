@@ -46,7 +46,7 @@ export class ZonelistComponent implements OnInit{
     this.getListOfZones() ;
     this.RefreshDevicesList?.subscribe(() =>{
       this.getListOfZones() ;
-    })
+    }) ;
   }
 
   moseon = false ; 
